@@ -829,6 +829,7 @@ MonoBehaviour:
   target: {fileID: 2111910115}
   projectilePrefab: {fileID: 7831103087024847326, guid: 36ae2d04d3336414d984b610c44cd4a6, type: 3}
   projectileSpeed: 10
+  speed: 3
 --- !u!1 &826451086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,6 +1682,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1818348109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818348111}
+  - component: {fileID: 1818348110}
+  m_Layer: 0
+  m_Name: AirDrop Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1818348110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818348109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be61b0c1488c469ebf257a6749c47c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airDrop: {fileID: 4195605856148341720, guid: a8a99ce84030d4728bf2b49e4c70942b, type: 3}
+--- !u!4 &1818348111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818348109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.850692, y: -0.07, z: -0.14828028}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1818948638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2255,7 @@ MonoBehaviour:
   movementForce: 1
   speed: 5
   rotationControl: 1
+  ObjVelocity: {x: 0, y: 0}
 --- !u!212 &2111910119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2269,7 +2316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111910115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7572327, y: -0.03, z: 0}
+  m_LocalPosition: {x: -7.7572327, y: 2.47, z: 0}
   m_LocalScale: {x: 1.5657, y: 1.5657, z: 1.5657}
   m_ConstrainProportionsScale: 0
   m_Children: []

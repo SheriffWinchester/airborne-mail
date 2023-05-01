@@ -12,6 +12,9 @@ public class PlaneController : MonoBehaviour
     public float speed;
     public float rotationControl;
     float verticalInput;
+    Vector2 NewPos;
+    [SerializeField] public Vector2 ObjVelocity;
+    Vector2 PrevPos;
 
     void Start()
     {
@@ -36,59 +39,12 @@ public class PlaneController : MonoBehaviour
             
             transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
-        Debug.Log(rb.velocity);
-
-        // Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized;
-        // float inputMagnitude = Mathf.Clamp01(movement.magnitude);   
-        // transform.Translate(movement * speed * inputMagnitude * Time.deltaTime, Space.World);
-
-        // if (movement != Vector2.zero)
-        // {
-        //     Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, movement);
-        //     transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationControl * Time.deltaTime);
-        // }
-
-        // rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-
- 
-
-        
-
-        // Quaternion targetRotation = Quaternion.LookRotation(movement);
-        // targetRotation = Quaternion.RotateTowards(
-        //     transform.rotation,
-        //     targetRotation,
-        //     180 * Time.fixedDeltaTime);
-        // rb.MoveRotation(targetRotation);
-        // Vector2 Vel = transform.right * (horizontal * movementForce);
-        // rb.AddForce(Vel);
-
-        // float Dir = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.right));
-
-        // if(movementForce > 0)
-        // {
-        //     if(Dir > 0)
-        //     {
-        //         rb.rotation += horizontal * rotationControl * (rb.velocity.magnitude / speed);
-        //     } 
-        //     else
-        //     {
-        //         rb.rotation -= horizontal * rotationControl * (rb.velocity.magnitude / speed);
-        //     }
-        // }
-        // float thrustforce = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.down)) * 2.0f;
-
-        // Vector2 relForce = Vector2.up * thrustforce;
-
-        // rb.AddForce(rb.GetRelativeVector(relForce));
 
 
-        // if(rb.velocity.magnitude > speed)
-        // {
-        //     rb.velocity = rb.velocity.normalized * speed;
-        // }
-        // // rb.velocity = new Vector2(0, 0);
-        // // rb.AddRelativeForce(new Vector2(3f * movementForce, 0));
+        NewPos = transform.position;  // each frame track the new position
+        ObjVelocity = (NewPos - PrevPos) / Time.fixedDeltaTime;  // velocity = dist/time
+        PrevPos = NewPos;  // update position for next frame calculation
+        //Debug.Log(ObjVelocity);
     }
-
+  
 }
