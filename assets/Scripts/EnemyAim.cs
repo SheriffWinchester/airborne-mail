@@ -7,9 +7,12 @@ public class EnemyAim : MonoBehaviour
     public GameObject target;
     public GameObject projectilePrefab;
     public float projectileSpeed = 10f;
+    public float speed = 3f;
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Main Plane");
         // Calculate the distance between the enemy and the target
         float distance = Vector2.Distance(transform.position, target.transform.position);
@@ -18,7 +21,7 @@ public class EnemyAim : MonoBehaviour
         float timeToTarget = distance / projectileSpeed;
 
         // Predict the future position of the target based on its current velocity
-        Vector3 predictedPosition = target.transform.position + (target.GetComponent<Rigidbody>().velocity * timeToTarget);
+        Vector2 predictedPosition = target.transform.position + (target.GetComponent<Rigidbody2D>().velocity * timeToTarget);
 
         // Aim at the predicted position
         transform.LookAt(predictedPosition);
@@ -27,7 +30,9 @@ public class EnemyAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().velocity = projectileSpeed * transform.forward;
+        //GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        //projectile.GetComponent<Rigidbody2D>().velocity = projectileSpeed * transform.forward;
+        transform.position = Vector2.MoveTowards(transform.position, predictedPosition);
+        //rb.velocity = projectileSpeed * transform.forward;
     }
 }
