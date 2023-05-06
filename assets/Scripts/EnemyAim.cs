@@ -7,12 +7,13 @@ public class EnemyAim : MonoBehaviour
     public GameObject target;
     public GameObject projectilePrefab;
     public Transform playerTransform;
+    public Rigidbody2D playerRB;
     Vector2 predictedPosition;
     Vector2 targetPosition;
     Vector2 direction;
     PlaneController planeController;
     public float projectileSpeed = 10f;
-    public float speed = 100f;
+    public float speed = 10f;
     Rigidbody2D rb;
     bool forceOnce = true;
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class EnemyAim : MonoBehaviour
          rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Main Plane");
         playerTransform = target.GetComponent<Transform>();
+        playerRB = target.GetComponent<Rigidbody2D>();
         planeController = target.GetComponent<PlaneController>();
 
         // // Calculate the distance between the enemy and the target
@@ -41,18 +43,19 @@ public class EnemyAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (forceOnce)
-        {
-            Predict();
-            Debug.Log(direction);
-            forceOnce = false;
-        }
+            if (forceOnce)
+            {
+                Predict();
+                Debug.Log(direction);
+                forceOnce = false;
+            }
+
         //GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         //projectile.GetComponent<Rigidbody2D>().velocity = projectileSpeed * transform.forward;
         //transform.position = Vector2.MoveTowards(transform.position, predictedPosition, speed * Time.deltaTime);
         //rb.velocity = projectileSpeed * transform.forward;
-        rb.AddForce(direction);
-        Debug.Log(direction * speed);
+        //rb.AddForce(direction);
+        //Debug.Log(direction * speed);
     }
     void Predict()
     {
@@ -64,12 +67,13 @@ public class EnemyAim : MonoBehaviour
 
         targetPosition = playerTransform.position;
         // Predict the future position of the player based on their current velocity
-        predictedPosition = targetPosition + (planeController.ObjVelocity * timeToTarget);
-
+        predictedPosition = targetPosition + (playerRB.velocity * timeToTarget);
+        transform.position = Vector2.MoveTowards(transform.position, predictedPosition, speed * Time.deltaTime);
         // Calculate the direction to the predicted position
         direction = predictedPosition - (Vector2)transform.position;
-        // Normalize the direction and rotate the enemy plane to face it
+        // // Normalize the direction and rotate the enemy plane to face it
         direction.Normalize();
-        transform.right = direction;
+        rb.AddForce(direction * speed);
+        //transform.right = direction;
     }
 }
