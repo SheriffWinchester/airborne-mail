@@ -14,6 +14,13 @@ public class OutOfBounds : MonoBehaviour
             xPos = collider.transform.position.x;
             yPos = collider.transform.position.y;
             collider.transform.position = new Vector2(xPos, (yPos * 0) - yPos);
-        }    
+            collider = null;
+        } 
+        if (collider.CompareTag("Enemy Plane 1"))
+        {
+            Debug.Log("Triggered: " + collider.transform.name);
+            Destroy(collider.gameObject);
+            collider = null;
+        }  
     }
 }

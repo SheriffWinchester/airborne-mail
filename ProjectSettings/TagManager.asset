@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bounds
   - Main Plane
+  - Enemy Plane 1
   layers:
   - Default
   - TransparentFX

@@ -797,7 +797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &734885561
 Transform:
   m_ObjectHideFlags: 0
@@ -826,10 +826,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPlane: {fileID: 6443601061978053472, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
-  target: {fileID: 2111910115}
-  projectilePrefab: {fileID: 7831103087024847326, guid: 36ae2d04d3336414d984b610c44cd4a6, type: 3}
-  projectileSpeed: 10
-  speed: 3
 --- !u!1 &826451086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1055,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2463876057854343697, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2463876057854343697, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 93658934142469901, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1069,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 93658934142469901, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 93658934142469901, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1111,8 +1115,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Plane 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6443601061978053472, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6443601061978053472, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
+      propertyPath: m_TagString
+      value: Enemy Plane 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733844175387367286, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1314032530}
+    - target: {fileID: 8733844175387367286, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
+      propertyPath: projectileSpeed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6257090742861778797, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
 --- !u!1 &1134415869
 GameObject:
@@ -1408,6 +1428,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1314032530 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: -2463876057854343697, guid: 0cae3907d43b0854191c90c8cb597cfe, type: 3}
+  m_PrefabInstance: {fileID: 1029819841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383843164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,7 +2395,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111910115}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

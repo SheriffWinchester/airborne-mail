@@ -6,15 +6,36 @@ public class EnemyMovement : MonoBehaviour
 {
     public Rigidbody2D projectile;
     public float projectileSpeed;
+    public float planeSpeed;
     public Rigidbody2D target;
-
+    public Rigidbody2D rb;
     public void Start() 
     {
+        rb.GetComponent<Rigidbody2D>();
         target = GameObject.Find("Main Plane").GetComponent<Rigidbody2D>();
-        InvokeRepeating(nameof(Fire), time: .1f, repeatRate: .1f);    
+        MovePlane();
+        StartCoroutine(Fire());
+        //InvokeRepeating(nameof(Fire), time: 1f, repeatRate: 1f);    
     }
-
-    public void Fire()
+    public void Update()
+    {
+        
+    }
+    public void MovePlane()
+    {
+        
+        if (InterceptionDirection(a: target.transform.position, b: transform.position, vA: target.velocity, projectileSpeed, result: out var direction))
+        {
+            rb.velocity = direction * planeSpeed;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.Rotate(180, 0, angle);
+            //transform.LookAt(direction, Vector3.forward);
+        } else
+        {
+            rb.velocity = (target.transform.position - transform.position).normalized * planeSpeed;
+        }
+    }
+    IEnumerator Fire()
     {
         var instance = Instantiate(projectile, transform.position, rotation: Quaternion.identity);
         if (InterceptionDirection(a: target.transform.position, b: transform.position, vA: target.velocity, projectileSpeed, result: out var direction))
@@ -24,12 +45,9 @@ public class EnemyMovement : MonoBehaviour
         {
             instance.velocity = (target.transform.position - transform.position).normalized * projectileSpeed;
         }
+        yield return new WaitForSeconds(0.5f);
     }
-    public void Update()
-    {
-        //projectile.velocity = (target.transform.position - transform.position).normalized * projectileSpeed;
-    }
-
+    
     public bool InterceptionDirection(Vector2 a, Vector2 b, Vector2 vA, float sB, out Vector2 result)
     {
         var aToB = b - a;
