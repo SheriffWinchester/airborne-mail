@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         {
             rb.velocity = direction * planeSpeed;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.Rotate(180, 0, angle);
+            transform.Rotate(0, 0, angle);
             //transform.LookAt(direction, Vector3.forward);
         } else
         {
