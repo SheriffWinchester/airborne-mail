@@ -9,10 +9,17 @@ public class EnemyMovement : MonoBehaviour
     public float planeSpeed;
     public Rigidbody2D target;
     public Rigidbody2D rb;
+
+    Vector3 targetPosition;
+    Vector3 selfPosition;
+    Vector2 targetVelocity;
     public void Start() 
     {
         rb.GetComponent<Rigidbody2D>();
         target = GameObject.Find("Main Plane").GetComponent<Rigidbody2D>();
+        targetPosition = target.transform.position;
+        selfPosition = transform.position;
+        targetVelocity = target.velocity;
         MovePlane();
         StartCoroutine(Fire());
         //InvokeRepeating(nameof(Fire), time: 1f, repeatRate: 1f);    
@@ -24,28 +31,32 @@ public class EnemyMovement : MonoBehaviour
     public void MovePlane()
     {
         
-        if (InterceptionDirection(a: target.transform.position, b: transform.position, vA: target.velocity, projectileSpeed, result: out var direction))
+        if (InterceptionDirection(a: targetPosition, b: selfPosition, vA: targetVelocity, projectileSpeed, result: out var direction))
         {
             rb.velocity = direction * planeSpeed;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.Rotate(0, 0, angle);
+            transform.Rotate(180, 0, -angle);
             //transform.LookAt(direction, Vector3.forward);
         } else
         {
-            rb.velocity = (target.transform.position - transform.position).normalized * planeSpeed;
+            rb.velocity = (targetPosition - selfPosition).normalized * planeSpeed;
         }
     }
     IEnumerator Fire()
     {
-        var instance = Instantiate(projectile, transform.position, rotation: Quaternion.identity);
-        if (InterceptionDirection(a: target.transform.position, b: transform.position, vA: target.velocity, projectileSpeed, result: out var direction))
+        while(true)
         {
-            instance.velocity = direction * projectileSpeed;
-        } else
-        {
-            instance.velocity = (target.transform.position - transform.position).normalized * projectileSpeed;
+            var instance = Instantiate(projectile, transform.position, rotation: Quaternion.identity);
+            if (InterceptionDirection(a: target.transform.position, b: transform.position, vA: target.velocity, projectileSpeed, result: out var direction))
+            {
+                instance.velocity = direction * projectileSpeed;
+            } else
+            {
+                instance.velocity = (target.transform.position - transform.position).normalized * projectileSpeed;
+            }
+            yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(0.5f);
+        
     }
     
     public bool InterceptionDirection(Vector2 a, Vector2 b, Vector2 vA, float sB, out Vector2 result)
