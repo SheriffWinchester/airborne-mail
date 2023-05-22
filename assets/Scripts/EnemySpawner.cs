@@ -34,11 +34,8 @@ public class EnemySpawner : MonoBehaviour
             forceAngleX = Random.Range(4.0f, -2.5f);
             forceAngleY = Random.Range(4.0f, -4.0f);
             forceSpeed = Random.Range(-10f, -30f);
-            spawnWait = Random.Range(1.0f, 3.5f);
+            spawnWait = Random.Range(0.5f, 4f);
             //prefabRandom = Random.Range(0, 4);
-
-            // Vector2 forceAngle = new Vector2(forceAngleX, forceAngleY);
-            // Vector2 forceVertical = new Vector2(forceAngleX, 5.0f);
 
             Instantiate(spawnPlane, new Vector2(spawnX, spawnY), Quaternion.identity);
 

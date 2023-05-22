@@ -47,12 +47,12 @@ public class EnemyMovement : MonoBehaviour
         while(true)
         {
             var instance = Instantiate(projectile, transform.position, rotation: Quaternion.identity);
-            if (InterceptionDirection(a: target.transform.position, b: transform.position, vA: target.velocity, projectileSpeed, result: out var direction))
+            if (InterceptionDirection(a: targetPosition, b: selfPosition, vA: targetVelocity, projectileSpeed, result: out var direction))
             {
                 instance.velocity = direction * projectileSpeed;
             } else
             {
-                instance.velocity = (target.transform.position - transform.position).normalized * projectileSpeed;
+                instance.velocity = (targetPosition - selfPosition).normalized * projectileSpeed;
             }
             yield return new WaitForSeconds(0.5f);
         }
