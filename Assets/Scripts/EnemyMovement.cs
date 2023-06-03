@@ -13,6 +13,8 @@ public class EnemyMovement : MonoBehaviour
     Vector3 targetPosition;
     Vector3 selfPosition;
     Vector2 targetVelocity;
+
+    float _deviationAmount = 50;
     public void Start() 
     {
         rb.GetComponent<Rigidbody2D>();
@@ -30,7 +32,6 @@ public class EnemyMovement : MonoBehaviour
     }
     public void MovePlane()
     {
-        
         if (InterceptionDirection(a: targetPosition, b: selfPosition, vA: targetVelocity, projectileSpeed, result: out var direction))
         {
             rb.velocity = direction * planeSpeed;
