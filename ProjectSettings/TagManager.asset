@@ -9,6 +9,7 @@ TagManager:
   - Enemy Plane 1
   - Bullet
   - Missile
+  - Enemy Plane 2
   layers:
   - Default
   - TransparentFX

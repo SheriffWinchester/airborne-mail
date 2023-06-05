@@ -12,16 +12,18 @@ public class HomingMissile : MonoBehaviour
     GameObject instance;
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.Find("Main Plane");
+        //target = GameObject.Find("Main Plane");
+        Invoke("SpawnMissile", 1.5f);
     }
-    void Update() {
-        if (launchedStatus == false) 
-        {
-            SpawnMissile();
-            launchedStatus = true;
-        }
-    }
+    // void Update() {
+    //     // if (launchedStatus == false) 
+    //     // {
+            
+    //     //     SpawnMissile();
+    //     //     launchedStatus = true;
+    //     // }
+    // }
     void SpawnMissile() {
-        instance = Instantiate(missile, transform.position, Quaternion.identity);
+        Instantiate(missile, transform.position, Quaternion.identity);
     }
 }

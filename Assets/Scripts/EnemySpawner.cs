@@ -6,7 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     //public Camera mainCamera;
     //public GameObject color;
-    public GameObject spawnPlane;
+    public GameObject spawnFighterPlane;
+    public GameObject spawnRocketPlane;
     //[SerializeField] GameObject[] prefabs;
 
     float spawnX, spawnY, forceAngleX, forceAngleY;
@@ -16,7 +17,8 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnPlanes());
+        StartCoroutine(SpawnFighterPlanes());
+        StartCoroutine(SpawnRocketPlanes());
     }
 
     void Update() {
@@ -27,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    IEnumerator SpawnPlanes() {
+    IEnumerator SpawnFighterPlanes() {
         while(true) {
             spawnX = 10f;
             spawnY = Random.Range(3.0f, -3.0f);
@@ -37,7 +39,25 @@ public class EnemySpawner : MonoBehaviour
             spawnWait = Random.Range(0.5f, 4f);
             //prefabRandom = Random.Range(0, 4);
 
-            Instantiate(spawnPlane, new Vector2(spawnX, spawnY), Quaternion.identity);
+            Instantiate(spawnFighterPlane, new Vector2(spawnX, spawnY), Quaternion.identity);
+
+            yield return new WaitForSeconds(spawnWait);
+        }
+    }
+    IEnumerator SpawnRocketPlanes() {
+        while(true) {
+            spawnX = 10f;
+            spawnY = Random.Range(3.0f, -3.0f);
+            forceAngleX = Random.Range(4.0f, -2.5f);
+            forceAngleY = Random.Range(4.0f, -4.0f);
+            forceSpeed = Random.Range(-10f, -30f);
+            spawnWait = Random.Range(0.5f, 4f);
+            //prefabRandom = Random.Range(0, 4);
+            var gos = GameObject.FindGameObjectsWithTag("Enemy Plane 2");
+            if (gos.Length < 1)
+            {
+                Instantiate(spawnRocketPlane, new Vector2(spawnX, spawnY), Quaternion.identity);
+            }
 
             yield return new WaitForSeconds(spawnWait);
         }

@@ -21,6 +21,18 @@ public class OutOfBounds : MonoBehaviour
             Debug.Log("Triggered: " + collider.transform.name);
             Destroy(collider.gameObject);
             collider = null;
-        }  
+        }
+        if (collider.CompareTag("Enemy Plane 2"))
+        {
+            Debug.Log("Triggered: " + collider.transform.name);
+            Destroy(collider.gameObject);
+            collider = null;
+        }
+        if (collider.CompareTag("Missile"))
+        {
+            Debug.Log("Triggered: " + collider.transform.name);
+            Destroy(collider.gameObject);
+            collider = null;
+        }
     }
 }

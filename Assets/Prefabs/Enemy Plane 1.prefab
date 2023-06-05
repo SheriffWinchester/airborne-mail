@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 6971755663133873994, guid: 36ae2d04d3336414d984b610c44cd4a6, type: 3}
   projectileSpeed: 15
-  planeSpeed: 3
+  planeSpeed: 5
   target: {fileID: 0}
   rb: {fileID: -2463876057854343697}
 --- !u!61 &-5549255940888370070

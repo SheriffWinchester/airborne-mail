@@ -21,7 +21,7 @@ public class Missile : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         rb.velocity = -transform.right * speed;
-        Debug.Log(targetRotation);
+        //Debug.Log(targetRotation);
         // float angle = Mathf.Atan2(target.transform.position.y, target.transform.position.x) * Mathf.Rad2Deg;
         // instance.transform.Rotate(180, 0, -angle);
     }
