@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour, IPlaneMovement
 {
     public Rigidbody2D projectile;
     public float projectileSpeed;
@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
     Vector2 targetVelocity;
 
     float _deviationAmount = 50;
+
     public void Start() 
     {
         rb.GetComponent<Rigidbody2D>();
