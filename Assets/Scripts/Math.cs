@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Math
+public class Math : MonoBehaviour
 {
     public bool InterceptionDirection(Vector2 a, Vector2 b, Vector2 vA, float sB, out Vector2 result)
     {
