@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlaneWeapons : MonoBehaviour
 {
-    Math _math;
-    void Awake() 
-    {
-        _math = GetComponent<Math>();
-    }
+    public Vector3 targetPosition;
+    public Vector3 selfPosition;
+    public Vector2 targetVelocity;
+    public Rigidbody2D target;
     public IEnumerator _MachineGun(Rigidbody2D projectile, Vector3 targetPosition, 
                     Vector3 selfPosition, Vector2 targetVelocity, float projectileSpeed,
                     float rateFire)
@@ -16,14 +15,16 @@ public class PlaneWeapons : MonoBehaviour
         while(true)
         {
             var instance = Instantiate(projectile, transform.position, rotation: Quaternion.identity);
-            if (_math.InterceptionDirection(a: targetPosition, b: selfPosition, vA: targetVelocity, projectileSpeed, result: out var direction))
+            if (Math.InterceptionDirection(a: targetPosition, b: selfPosition, vA: targetVelocity, projectileSpeed, result: out var direction))
             {
                 instance.velocity = direction * projectileSpeed;
+                Debug.Log("Works");
             } else
             {
                 instance.velocity = (targetPosition - selfPosition).normalized * projectileSpeed;
             }
             yield return new WaitForSeconds(rateFire);
+            
         }
         
     }

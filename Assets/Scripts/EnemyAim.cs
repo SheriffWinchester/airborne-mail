@@ -11,7 +11,7 @@ public class EnemyAim : MonoBehaviour
     Vector2 predictedPosition;
     Vector2 targetPosition;
     Vector2 direction;
-    PlaneController planeController;
+    PlaneMovement planeMovement;
     public float projectileSpeed = 10f;
     public float speed = 10f;
     Rigidbody2D rb;
@@ -24,7 +24,7 @@ public class EnemyAim : MonoBehaviour
         target = GameObject.Find("Main Plane");
         playerTransform = target.GetComponent<Transform>();
         playerRB = target.GetComponent<Rigidbody2D>();
-        planeController = target.GetComponent<PlaneController>();
+        planeMovement = target.GetComponent<PlaneMovement>();
 
         // // Calculate the distance between the enemy and the target
         // float distance = Vector2.Distance(transform.position, target.transform.position);

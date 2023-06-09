@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour, IPlaneMovement
         targetPosition = target.transform.position;
         selfPosition = transform.position;
         targetVelocity = target.velocity;
-        MovePlane();
+        //MovePlane();
         StartCoroutine(Fire());
         //InvokeRepeating(nameof(Fire), time: 1f, repeatRate: 1f);    
     }

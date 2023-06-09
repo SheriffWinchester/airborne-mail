@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneController : MonoBehaviour
+public class PlaneMovement : MonoBehaviour
 {
     public float Speed;
     public float Acceleration;
