@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovementRocket : MonoBehaviour
+public class EnemyMovementRocket : C_Movement
 {
     public float planeSpeed;
-    public Rigidbody2D rb;
-    
     void Start() 
     {
         rb = transform.GetComponent<Rigidbody2D>();
-        //transform.Rotate(180, 0, 0);
+        transform.Rotate(180, 0, 180);
     }
     void FixedUpdate() {
-        rb.velocity = -transform.right * planeSpeed;
+        MoveRocketPlane(rb, planeSpeed);
     }
 }

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneWeapons : MonoBehaviour
+public class C_PlaneWeapons : MonoBehaviour
 {
-    public Vector3 targetPosition;
-    public Vector3 selfPosition;
-    public Vector2 targetVelocity;
-    public Rigidbody2D target;
+    [HideInInspector] public Vector3 targetPosition;
+    [HideInInspector] public Vector3 selfPosition;
+    [HideInInspector] public Vector2 targetVelocity;
+    [HideInInspector] public Rigidbody2D target;
     public IEnumerator _MachineGun(Rigidbody2D projectile, Vector3 targetPosition, 
                     Vector3 selfPosition, Vector2 targetVelocity, float projectileSpeed,
                     float rateFire)
@@ -18,7 +18,6 @@ public class PlaneWeapons : MonoBehaviour
             if (Math.InterceptionDirection(a: targetPosition, b: selfPosition, vA: targetVelocity, projectileSpeed, result: out var direction))
             {
                 instance.velocity = direction * projectileSpeed;
-                Debug.Log("Works");
             } else
             {
                 instance.velocity = (targetPosition - selfPosition).normalized * projectileSpeed;

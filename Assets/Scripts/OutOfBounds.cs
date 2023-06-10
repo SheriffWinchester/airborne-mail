@@ -11,11 +11,11 @@ public class OutOfBounds : MonoBehaviour
         {
             InversePosition(collider);
         } 
-        if (collider.CompareTag("Enemy Plane 1"))
+        if (collider.CompareTag("Fighter Plane"))
         {
             DestroyObject(collider);
         }
-        if (collider.CompareTag("Enemy Plane 2"))
+        if (collider.CompareTag("Rocket Plane"))
         {
             DestroyObject(collider);
         }

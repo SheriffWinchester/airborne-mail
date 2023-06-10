@@ -6,9 +6,10 @@ TagManager:
   tags:
   - Bounds
   - Main Plane
-  - Enemy Plane 1
   - Bullet
   - Missile
+  - Fighter Plane
+  - Rocket Plane
   - Enemy Plane 2
   layers:
   - Default

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2116042626325214440}
   - component: {fileID: 2116042626325214439}
-  - component: {fileID: 2116042626325214438}
   - component: {fileID: 2116042626325214437}
   - component: {fileID: 2116042626325214436}
+  - component: {fileID: 6903496566680654428}
   m_Layer: 6
   m_Name: Main Plane
   m_TagString: Main Plane
@@ -87,21 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2116042626325214438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116042626325214435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19f5eed2efd8d845aefb9e866bba2a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 6
-  Acceleration: 7
-  RotationControl: 5
 --- !u!50 &2116042626325214437
 Rigidbody2D:
   serializedVersion: 4
@@ -149,3 +134,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &6903496566680654428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116042626325214435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96bcf5d17993a67498281460bda80582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  Acceleration: 5
+  RotationControl: 4

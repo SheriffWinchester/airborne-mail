@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
             forceSpeed = Random.Range(-10f, -30f);
             spawnWait = Random.Range(0.5f, 4f);
             //prefabRandom = Random.Range(0, 4);
-            var gos = GameObject.FindGameObjectsWithTag("Enemy Plane 2");
+            var gos = GameObject.FindGameObjectsWithTag("Rocket Plane");
             if (gos.Length < 1)
             {
                 Instantiate(spawnRocketPlane, new Vector2(spawnX, spawnY), Quaternion.identity);

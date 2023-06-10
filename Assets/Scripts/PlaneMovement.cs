@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlaneMovement : MonoBehaviour
 {
-    public float Speed;
-    public float Acceleration;
+    public float Speed = 5;
+    public float Acceleration = 5;
 
     Rigidbody2D rb;
 
-    public float RotationControl;
+    public float RotationControl = 4;
 
     float MovY, MovX = 1;
 
