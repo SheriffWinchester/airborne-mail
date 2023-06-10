@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 863518418}
   m_Layer: 0
   m_Name: Bound West
-  m_TagString: Untagged
+  m_TagString: Bounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1696,7 +1696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2116042626325214440, guid: 8d5abd664866323468f6482c098f9964, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.49
+      value: -6.47
       objectReference: {fileID: 0}
     - target: {fileID: 2116042626325214440, guid: 8d5abd664866323468f6482c098f9964, type: 3}
       propertyPath: m_LocalPosition.y

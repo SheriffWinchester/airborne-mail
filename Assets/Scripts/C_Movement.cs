@@ -32,4 +32,34 @@ public class C_Movement : MonoBehaviour
     {
         rb.velocity = transform.right * planeSpeed;
     }
+    public void MoveMainPlane(float movX, float movY, float acceleration, float rotationControl, float speed)
+    {
+        Vector2 Vel = transform.right * (movX * acceleration);
+        rb.AddForce(Vel);
+
+        float Dir = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.right));
+
+        if(acceleration > 0)
+        {
+            if(Dir > 0)
+            {
+                rb.rotation += movY * rotationControl * (rb.velocity.magnitude / speed); 
+            }
+            else
+            {
+                rb.rotation -= movY * rotationControl * (rb.velocity.magnitude / speed); 
+            }
+        }
+        float thrustforce = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.down)) * 2.0f;
+
+        Vector2 relForce = Vector2.up * thrustforce;
+
+        rb.AddForce(rb.GetRelativeVector(relForce));
+
+
+        if(rb.velocity.magnitude > speed)
+        {
+            rb.velocity = rb.velocity.normalized * speed;
+        }
+    }
 }

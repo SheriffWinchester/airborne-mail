@@ -2,26 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Missile : MonoBehaviour
+public class Missile : C_PlaneWeapons
 {
     public float speed = 3f;
     public float rotationSpeed = 3f;
-    Rigidbody2D rb;
-    GameObject target;
+    public float damage;
     Vector2 vectorToTarget;
     Vector3 rotatedVectorToTarget;
+    
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.Find("Main Plane");
+        target = GameObject.Find("Main Plane").GetComponent<Rigidbody2D>();
     }
     void Update() {
-        FollowTarget();
+        FireMissile(vectorToTarget, rotatedVectorToTarget, rotationSpeed, speed);
     }
-    void FollowTarget() {
-        vectorToTarget = transform.position - target.transform.position;
-        rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * vectorToTarget;
-        Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        rb.velocity = -transform.right * speed;
+    void OnTriggerEnter2D(Collider2D collider) {
+        Damage(collider, collider.name, damage);
     }
 }

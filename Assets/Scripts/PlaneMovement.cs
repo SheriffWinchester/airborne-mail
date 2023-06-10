@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneMovement : MonoBehaviour
+public class PlaneMovement : C_Movement
 {
-    public float Speed = 5;
-    public float Acceleration = 5;
-
-    Rigidbody2D rb;
-
-    public float RotationControl = 4;
-
-    float MovY, MovX = 1;
+    public float speed = 5;
+    public float acceleration = 5;
+    public float rotationControl = 4;
+    float movY, movX = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -22,39 +18,13 @@ public class PlaneMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovY = Input.GetAxis("Vertical");  
+        movY = Input.GetAxis("Vertical");  
     }
 
    
     private void FixedUpdate()
     {
-        Vector2 Vel = transform.right * (MovX * Acceleration);
-        rb.AddForce(Vel);
-
-        float Dir = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.right));
-
-        if(Acceleration > 0)
-        {
-            if(Dir > 0)
-            {
-                rb.rotation += MovY * RotationControl * (rb.velocity.magnitude / Speed); 
-            }
-            else
-            {
-                rb.rotation -= MovY * RotationControl * (rb.velocity.magnitude / Speed); 
-            }
-        }
-        float thrustforce = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.down)) * 2.0f;
-
-        Vector2 relForce = Vector2.up * thrustforce;
-
-        rb.AddForce(rb.GetRelativeVector(relForce));
-
-
-        if(rb.velocity.magnitude > Speed)
-        {
-            rb.velocity = rb.velocity.normalized * Speed;
-        }
+        MoveMainPlane(movX, movY, acceleration, rotationControl, speed);
     }
 }
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2116042626325214437}
   - component: {fileID: 2116042626325214436}
   - component: {fileID: 6903496566680654428}
+  - component: {fileID: -4141917931100627145}
   m_Layer: 6
   m_Name: Main Plane
   m_TagString: Main Plane
@@ -146,6 +147,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bcf5d17993a67498281460bda80582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  Acceleration: 5
-  RotationControl: 4
+  target: {fileID: 0}
+  rb: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  selfPosition: {x: 0, y: 0, z: 0}
+  targetVelocity: {x: 0, y: 0}
+  speed: 5
+  acceleration: 5
+  rotationControl: 4
+--- !u!114 &-4141917931100627145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116042626325214435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593d53a41152dea4dbe59948d6f9b390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
