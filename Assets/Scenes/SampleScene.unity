@@ -1686,6 +1686,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5953411884325780701, guid: 8d5abd664866323468f6482c098f9964, type: 3}
+      propertyPath: fireRate
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: -5953411884325780701, guid: 8d5abd664866323468f6482c098f9964, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 6971755663133873994, guid: 0f07ca4e96c24dc408c5db3b1c7dbdff, type: 3}
     - target: {fileID: 2116042626325214435, guid: 8d5abd664866323468f6482c098f9964, type: 3}
       propertyPath: m_Name
       value: Main Plane
