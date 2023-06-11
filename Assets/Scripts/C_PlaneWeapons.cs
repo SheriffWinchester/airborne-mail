@@ -9,9 +9,7 @@ public class C_PlaneWeapons : MonoBehaviour
     [HideInInspector] public Vector2 targetVelocity;
     [HideInInspector] public Rigidbody2D target;
     [HideInInspector] public Rigidbody2D rb;
-    public IEnumerator _MachineGun(Rigidbody2D projectile, Vector3 targetPosition, 
-                    Vector3 selfPosition, Vector2 targetVelocity, float projectileSpeed,
-                    float rateFire)
+    public IEnumerator _MachineGun(Rigidbody2D projectile, float projectileSpeed, float rateFire)
     {
         while(true)
         {
@@ -37,6 +35,19 @@ public class C_PlaneWeapons : MonoBehaviour
             player.health = player.health - damage;
             Destroy(gameObject);
             Debug.Log(player.health);
+        }
+    }
+    public void _MachineGunPlayer(float nextFire, float fireRate, float projectileSpeed, 
+                                Rigidbody2D bulletPrefab)
+    {
+        if (Input.GetKey(KeyCode.Space) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            if(Time.timeScale != 0f)
+            {
+                var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                bullet.velocity = transform.right * projectileSpeed;
+            }
         }
     }
 }

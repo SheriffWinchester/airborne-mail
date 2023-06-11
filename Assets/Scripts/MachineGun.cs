@@ -14,7 +14,6 @@ public class MachineGun : C_PlaneWeapons
         selfPosition = transform.position;
         targetVelocity = target.velocity;
 
-        StartCoroutine(_MachineGun(projectile, targetPosition, selfPosition, targetVelocity, 
-                        projectileSpeed, rateFire));
+        StartCoroutine(_MachineGun(projectile, projectileSpeed, rateFire));
     }
 }
