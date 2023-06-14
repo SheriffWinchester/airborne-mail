@@ -1688,7 +1688,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5953411884325780701, guid: 8d5abd664866323468f6482c098f9964, type: 3}
       propertyPath: fireRate
-      value: 0.001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5953411884325780701, guid: 8d5abd664866323468f6482c098f9964, type: 3}
       propertyPath: bulletPrefab

@@ -37,17 +37,22 @@ public class C_PlaneWeapons : MonoBehaviour
             Debug.Log(player.health);
         }
     }
-    public void _MachineGunPlayer(float nextFire, float fireRate, float projectileSpeed, 
+    public float _MachineGunPlayer(float time, float nextFire, float fireRate, float projectileSpeed, 
                                 Rigidbody2D bulletPrefab)
     {
-        if (Input.GetKey(KeyCode.Space) && Time.time > nextFire)
+        Debug.Log("NF: " + nextFire);
+        Debug.Log("TT: " + time);
+        if (Input.GetKeyDown(KeyCode.Space) && time > nextFire)
         {
-            nextFire = Time.time + fireRate;
+            nextFire = time + fireRate;
             if(Time.timeScale != 0f)
             {
                 var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 bullet.velocity = transform.right * projectileSpeed;
             }
+            
         }
+        Debug.Log("1515: " + nextFire);
+        return nextFire;
     }
 }
