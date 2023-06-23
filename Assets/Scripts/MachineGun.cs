@@ -5,7 +5,7 @@ public class MachineGun : C_PlaneWeapons
 {
     public Rigidbody2D projectile;
     public float projectileSpeed = 3f;
-    public float rateFire = 0.5f;
+    public float fireRate = 0.5f;
     void Start() 
     {
         target = GameObject.Find("Main Plane").GetComponent<Rigidbody2D>();
@@ -14,6 +14,6 @@ public class MachineGun : C_PlaneWeapons
         selfPosition = transform.position;
         targetVelocity = target.velocity;
 
-        StartCoroutine(_MachineGun(projectile, projectileSpeed, rateFire));
+        StartCoroutine(_MachineGun(projectile, projectileSpeed, fireRate));
     }
 }

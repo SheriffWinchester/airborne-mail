@@ -9,13 +9,13 @@ public class C_PlaneWeapons : MonoBehaviour
     [HideInInspector] public Vector2 targetVelocity;
     [HideInInspector] public Rigidbody2D target;
     [HideInInspector] public Rigidbody2D rb;
-    public IEnumerator _MachineGun(Rigidbody2D projectile, float projectileSpeed, float rateFire)
+    public IEnumerator _MachineGun(Rigidbody2D projectile, float projectileSpeed, float fireRate)
     {
         while(true)
         {
             var instance = Instantiate(projectile, transform.position, rotation: Quaternion.identity);
             instance.velocity = transform.right * projectileSpeed;
-            yield return new WaitForSeconds(rateFire);
+            yield return new WaitForSeconds(fireRate);
         }
         
     }
@@ -37,12 +37,12 @@ public class C_PlaneWeapons : MonoBehaviour
             Debug.Log(player.health);
         }
     }
-    public float _MachineGunPlayer(float time, float nextFire, float fireRate, float projectileSpeed, 
+    public float _MachineGunPlayer(float time, ref float nextFire, float fireRate, float projectileSpeed, 
                                 Rigidbody2D bulletPrefab)
     {
         Debug.Log("NF: " + nextFire);
         Debug.Log("TT: " + time);
-        if (Input.GetKeyDown(KeyCode.Space) && time > nextFire)
+        if (Input.GetKey(KeyCode.Space) && time > nextFire)
         {
             nextFire = time + fireRate;
             if(Time.timeScale != 0f)
